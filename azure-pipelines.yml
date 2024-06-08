@@ -26,7 +26,7 @@ stages:
   displayName: Build stage
   jobs:
   - job: BuildJob
-    pool: myAgentPool
+    pool: myAgentPoolForAzurePipelines
     steps:    
     - script: |
         python -m venv appenv
@@ -66,7 +66,7 @@ stages:
   condition: succeeded()
   jobs:
   - deployment: DeploymentJob
-    pool: myAgentPool
+    pool: myAgentPoolForAzurePipelines
     environment: $(environmentName)
     strategy:
       runOnce:
